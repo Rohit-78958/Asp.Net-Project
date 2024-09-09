@@ -132,14 +132,17 @@
     <Content Include="Images\home_32dp_274483_FILL0_wght400_GRAD0_opsz40.svg" />
     <Content Include="Images\house_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
     <Content Include="Images\keep_public_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
+    <Content Include="Images\KTA_image.jpg" />
     <Content Include="Images\menu_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
     <Content Include="Images\person_add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
     <Content Include="Images\play_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
     <Content Include="Images\power_settings_new_24dp_274483_FILL0_wght400_GRAD0_opsz24.svg" />
+    <Content Include="Images\Rsc3.png" />
     <Content Include="Images\settings_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
     <Content Include="Images\sync_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
+    <Content Include="Images\unnamedsc3.png" />
     <Content Include="Images\zoom_out_map_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 %281%29.svg" />
-    <Content Include="screen1.aspx" />
+    <Content Include="Screen1.aspx" />
     <Content Include="Screen2.aspx" />
     <Content Include="Screen3.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -232,12 +235,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="screen1.aspx.cs">
-      <DependentUpon>screen1.aspx</DependentUpon>
+    <Compile Include="Screen1.aspx.cs">
+      <DependentUpon>Screen1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="screen1.aspx.designer.cs">
-      <DependentUpon>screen1.aspx</DependentUpon>
+    <Compile Include="Screen1.aspx.designer.cs">
+      <DependentUpon>Screen1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Screen2.aspx.cs">
       <DependentUpon>Screen2.aspx</DependentUpon>
@@ -248,7 +251,6 @@
     </Compile>
     <Compile Include="Screen3.aspx.cs">
       <DependentUpon>Screen3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Screen3.aspx.designer.cs">
       <DependentUpon>Screen3.aspx</DependentUpon>

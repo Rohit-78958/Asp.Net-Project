@@ -7,43 +7,82 @@
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: #4d69a5;
-    border-bottom:1px solid white;
-    color:white
+    background-color: #3778bc;
+    border-bottom: 1px solid white;
+    color: white
 }
 
 .side {
-    background-color: #2b54ad;
+    background-color: #3165a1;
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .subHeader {
-    display:flex;
-    justify-content:center;
-    background-color: #2b54ad;
-    padding:10px;
-    color:white;
-    font-weight:bold
+    display: flex;
+    justify-content: center;
+    background-color: #0f4988;
+    padding: 10px;
+    color: white;
+    font-weight: bold
 }
 
 .content{
     display:flex;
-    justify-content:space-around;
+    justify-content:center;
     flex-wrap:wrap
 }
 
 .box {
-    width: 300px;
+    width: 25%;
     height: 200px;
     border-radius: 10px;
-    background-color: #6797c1;
-    margin:20px
+    background-color: #b3c5ed;
+    margin: 30px
 }
 
 .subbox {
     border-radius: 10px;
-    background-color: #2b54ad;
+    background-color: #3150a0;
     height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.footer {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #3778bc;
+    color:white
+}
+
+.floater {
+    background-color: #0f4988;
+    width: 80%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    overflow:hidden
+}
+
+.floater p {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 10s linear infinite;
+    font-size: large;
+    padding-left: 100%; /* Start from right */
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }

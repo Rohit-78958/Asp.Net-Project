@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,7 +17,34 @@ namespace Evaluation
         {
             if (!IsPostBack)
             {
-                Values = DBUtil.GetDetails(out List<string> names);
+                string timeInterval = ConfigurationManager.AppSettings["Interval"];
+                int timerInterval;
+                if (int.TryParse(timeInterval, out timerInterval))
+                {
+                    Timer1.Interval = timerInterval;
+                }
+                else
+                {
+                    Timer1.Interval = 10000;
+                }
+                ContentUpdate();
+            }
+        }
+
+        protected void ContentUpdate()
+        {
+            try
+            {
+                Values = DBUtil.GetDetails();
+
+                List<string> names = new List<string>()
+                {
+                    "Cumulative Target Qty.",
+                    "Cumulative Production Qty.",
+                    "ShortFall Qty.",
+                    "Rejection Qty.",
+                    "Rework Qty."
+                };
 
                 // Create a list of objects that contain both the values and the names
                 var data = Values.Zip(names, (value, name) => new { Value = value, Name = name }).ToList();
@@ -27,8 +56,8 @@ namespace Evaluation
                 var valuesToDisplay = data.Skip(lastIndex).Take(5).ToList();
 
                 // Bind these values to the Repeater
-                Repeater1.DataSource = valuesToDisplay;
-                Repeater1.DataBind();
+                listview.DataSource = valuesToDisplay;
+                listview.DataBind();
 
                 // Update the last index in Session
                 Session["LastIndex"] = lastIndex + 5;
@@ -39,6 +68,15 @@ namespace Evaluation
                     Session["LastIndex"] = 0;
                 }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            ContentUpdate();
         }
     }
 }

@@ -11,3 +11,11 @@
     color:white;
     align-items:center
 }
+
+.sideHeader{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-right:10px
+}

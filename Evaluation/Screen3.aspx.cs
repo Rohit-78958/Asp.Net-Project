@@ -8,6 +8,13 @@ using System.Web.UI.WebControls;
 
 namespace Evaluation
 {
+    public class ChartData
+    {
+        public List<string> DownId { get; set; }
+        public List<double> DownTime { get; set; }
+    }
+
+
     public partial class Screen3 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -17,17 +24,17 @@ namespace Evaluation
 
 
         [System.Web.Services.WebMethod]
-        public static object GetChartData()
+        public static ChartData GetChartData()
         {
             // Data to be returned to the client-side Highcharts function
             try
             {
                 var downTime = DBUtil.ChartsDetails(out List<string> downId);
 
-                var data = new
+                var data = new ChartData
                 {
-                    downid = downId,
-                    downtime = downTime
+                    DownId = downId,
+                    DownTime = downTime
                 };
 
                 return data;

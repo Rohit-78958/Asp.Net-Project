@@ -30,9 +30,8 @@ namespace Evaluation
             } 
         }
 
-        public static List<double> GetDetails(out List<string> names)
+        public static List<double> GetDetails()
         {
-            names = new List<string>();
             List<double> values = new List<double>();
             SqlConnection sqlConnection = null;
             SqlDataReader reader = default;
@@ -55,40 +54,31 @@ namespace Evaluation
 
                 reader = cmd.ExecuteReader();
 
-                do
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        //Debug.WriteLine($"---------{reader.GetFieldType(2)}---{reader.GetFieldType(3)}----{reader.GetFieldType(4)}---{reader.GetFieldType(5)}----------{reader.GetFieldType(6)}------");
-                        names.Add(reader.GetName(2));
-                        if (reader.GetFieldType(2) == typeof(int))
-                            values.Add(Convert.ToDouble(reader.GetInt32(2)));
-                        else
-                            values.Add(reader.GetDouble(2));
+                    //Debug.WriteLine($"---------{reader.GetFieldType(2)}---{reader.GetFieldType(3)}----{reader.GetFieldType(4)}---{reader.GetFieldType(5)}----------{reader.GetFieldType(6)}------");
+                    if (reader.GetFieldType(2) == typeof(int))
+                        values.Add(Convert.ToDouble(reader["TargetQty"]));
+                    else
+                        values.Add(Convert.ToDouble(reader["TargetQty"]));
 
-                        names.Add(reader.GetName(3));
-                        values.Add(reader.GetDouble(3));
-                        names.Add(reader.GetName(4));
-                        values.Add(reader.GetDouble(4));
-                        names.Add(reader.GetName(5));
-                        values.Add(reader.GetDouble(5));
-                        names.Add(reader.GetName(6));
-                        values.Add(reader.GetDouble(6));
-                    }
-                }while(reader.NextResult());
-
-                return values;
+                    values.Add(Convert.ToDouble(reader["ProdQty"]));
+                    values.Add(Convert.ToDouble(reader["ShortfallQty"]));
+                    values.Add(Convert.ToDouble(reader["Rejection_Qty"]));
+                    values.Add(Convert.ToDouble(reader["Rework_Qty"]));
+                }
+              
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return values;
             }
             finally
             {
-                sqlConnection?.Close();
                 reader?.Close();
+                sqlConnection?.Close();
             }
+            return values;
         }
 
         public static List<double> ChartsDetails(out List<string> downId)
@@ -124,10 +114,10 @@ namespace Evaluation
                 {
                     while (reader.Read())
                     {
-                        Debug.WriteLine($"---------{reader.GetFieldType(1)}---{reader.GetFieldType(2)}-----");
+                        //Debug.WriteLine($"---------{reader.GetFieldType(1)}---{reader.GetFieldType(2)}-----");
 
-                        downId.Add(reader.GetString(1));
-                        downTime.Add(Math.Round(reader.GetDouble(2)/60,2));  
+                        downId.Add(Convert.ToString(reader["DownID"]));
+                        downTime.Add(Convert.ToDouble(reader["DownTime"]));  
                     }
                 } while (reader.NextResult());
 

@@ -134,7 +134,7 @@ namespace Evaluation
                 }
                 status.Remove(status.Length - 1, 1);  
 
-                List<SPCReport_BAJAJ> data = DBUtil.GetSPCReport_Bajaj(ddlMachine.SelectedValue, ddlComponent.SelectedValue, Calendar1.SelectedDate, Calendar2.SelectedDate, Convert.ToInt32(ddlOperation.SelectedValue), status.ToString(),characteristics.ToString());
+                List<SPCReport_BAJAJ> data = DBUtil.GetSPCReport_Bajaj(ddlMachine.SelectedValue, ddlComponent.SelectedValue, Convert.ToDateTime(FromDate.Text), Convert.ToDateTime(ToDate.Text), Convert.ToInt32(ddlOperation.SelectedValue), status.ToString(),characteristics.ToString());
 
                 ListView1.DataSource = data;
                 if (ListView1.DataSource != null)
@@ -161,7 +161,13 @@ namespace Evaluation
                                 if (headerParts.Length >= 3)
                                 {
                                     var headerName = headerParts[0];
-
+                                    string[] charec = characteristics.ToString().Split(',');
+                                    int column = 0;
+                                    for(int i = 0; i < charec.Length; i++)
+                                    {
+                                        string word = charec[i].Split('_')[0].ToLower().Trim();
+                                        if (headerName.ToLower().Trim().Contains(word)) column++;
+                                    }
                                     if(headerParts.Length == 4)
                                         subHeaders.Add(new { Val = headerParts[3] }); // Store sub-header value
                                     
@@ -174,7 +180,7 @@ namespace Evaluation
                                             HeaderName = $"{headerName} ({headerParts[1]}/{headerParts[2]})",  // Header name until the $ sign
                                             //Val1 = headerParts[1],    // val1 after $ and before _
                                             //Val2 = headerParts[2]     // val2 after _ and before @
-                                            Val = headerParts.Length == 4 ? headerParts[3] : "nosub"
+                                            Val = column
                                         };
                                     }
                                 }

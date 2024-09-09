@@ -6,6 +6,24 @@
 <head runat="server">
     <title></title>
     <link href="CSS/Screen2.css" rel="stylesheet" />
+
+    <style>
+        .tblListView tbody tr td{
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+        }
+
+        .tblListView{
+           border-spacing: 0px;
+        }
+        .contols tbody tr td{
+             border: 1px solid #ddd;
+             border-collapse: collapse;
+        }
+        .contols{
+            border-spacing: 0px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -63,7 +81,7 @@
 
                 <div class="content">
                     <div class="content1">
-                        <table class="contols" border="1">
+                        <table class="contols">
                             <tr class="firstRow">
                                 <td>Machine</td>
                                 <td>
@@ -86,11 +104,11 @@
                             <tr>
                                 <td>From Date</td>
                                 <td>
-                                    <asp:Calendar ID="Calendar1" runat="server" SelectedDate="2024-06-22"></asp:Calendar>
+                                    <asp:TextBox ID="FromDate" runat="server" TextMode="DateTime" Text="2024-06-22"></asp:TextBox>
                                 </td>
                                 <td>To Date</td>
                                 <td>
-                                    <asp:Calendar ID="Calendar2" runat="server" SelectedDate="2024-07-30"></asp:Calendar>
+                                    <asp:TextBox ID="ToDate" runat="server" TextMode="DateTime" Text="2024-07-30"></asp:TextBox>
                                 </td>
                                 <td>Serial No.</td>
                                 <td>
@@ -113,12 +131,12 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="content2">
+                    <div class="content2" style="width: 86vw; overflow: auto;">
                         <asp:ListView ID="ListView1" runat="server">
                             <EmptyItemTemplate>
                             </EmptyItemTemplate>
                             <LayoutTemplate>
-                                <table border="1">
+                                <table border="1" class="tblListView">
                                     <tr style="background-color: dodgerblue; font-weight: bold; color: white">
                                         <th style="min-width: 100px; padding: 10px">Date</th>
                                         <th style="min-width: 100px; padding: 10px">Shift</th>
@@ -129,7 +147,7 @@
 
                                         <asp:Repeater ID="DynamicHeadersRepeater" runat="server">
                                             <ItemTemplate>
-                                                <th colspan='<%# Eval("Val").ToString() == "nosub" ? "1" : "2" %>' style="min-width: 110px; padding: 10px">
+                                                <th colspan='<%# Eval("Val") %>' style="min-width: 110px; padding: 10px">
                                                     <%# Eval("HeaderName") %>
                                                 </th>
                                             </ItemTemplate>
@@ -151,6 +169,7 @@
                                                 <th style="min-width: 110px; padding: 5px"><%# Eval("Val") %></th>
                                             </ItemTemplate>
                                         </asp:Repeater>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
