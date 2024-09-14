@@ -9,14 +9,16 @@
     margin: 2px
 }
 
-h2 {
-    color: white
+h3 {
+    color:white;
+    position:relative;
+    left:50px
 }
 
 .header {
     padding: 1px;
     background-color: #04043e;
-    height: 60px;
+    height: 45px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +31,7 @@ h2 {
 
 .content {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: #252551;
     padding: 10px;
     display: flex;
@@ -75,6 +77,7 @@ h2 {
     color: white;
 }
 
+
 .btn {
     padding: 5px;
     border: none;
@@ -114,4 +117,12 @@ h2 {
     text-align: center;
     margin-top: 20px;
     width: 1000px
+}
+
+.container{
+    text-align:center
+}
+
+.container1{
+    text-align:center
 }

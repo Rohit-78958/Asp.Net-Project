@@ -121,7 +121,7 @@ namespace Evaluation
                             characteristics.Append(item.Value + ",");
                         }
                     }
-                    characteristics.Remove(characteristics.Length - 1, 1);
+                    if(characteristics.Length > 0)characteristics.Remove(characteristics.Length - 1, 1);
                 }
 
                 StringBuilder status = new StringBuilder();
@@ -168,13 +168,21 @@ namespace Evaluation
                                         string word = charec[i].Split('_')[0].ToLower().Trim();
                                         if (headerName.ToLower().Trim().Contains(word)) column++;
                                     }
-                                    if(headerParts.Length == 4)
+                                    if(headerParts.Length == 4 && column==2)
                                         subHeaders.Add(new { Val = headerParts[3] }); // Store sub-header value
                                     
                                     // Check if headerName is already processed, skip if true
                                     if (!processedHeaders.Contains(headerName))
                                     {
                                         processedHeaders.Add(headerName); // Add to processed headers
+                                        if(headerParts.Length==4 && column == 1)
+                                        {
+                                            return new
+                                            {
+                                                HeaderName = $"{headerName} ({headerParts[1]}/{headerParts[2]})_{headerParts[3]}",
+                                                Val=1
+                                            };
+                                        }
                                         return new
                                         {
                                             HeaderName = $"{headerName} ({headerParts[1]}/{headerParts[2]})",  // Header name until the $ sign

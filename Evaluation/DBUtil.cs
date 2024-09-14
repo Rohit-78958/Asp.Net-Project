@@ -81,7 +81,7 @@ namespace Evaluation
             return values;
         }
 
-        public static List<double> ChartsDetails(out List<string> downId)
+        public static List<double> ChartsDetails(out List<string> downId, string fromDate, string toDate)
         {
             List<double> downTime = new List<double>();
             downId = new List<string>();
@@ -96,8 +96,16 @@ namespace Evaluation
                 // Add the parameters to the command
                 //@StartTime = '2024-04-01',@EndTime = '2024-07-01',@MachineID = '',@DownID = '', @MatrixType = 'DLoss_By_Catagory',@PlantID = '',@Exclude = '',@Groupid = ''
 
-                cmd.Parameters.AddWithValue("@StartTime", new DateTime(2024, 04, 01));
-                cmd.Parameters.AddWithValue("@EndTime", new DateTime(2024, 07, 01));
+                if(!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+                {
+                    cmd.Parameters.AddWithValue("@StartTime", Convert.ToDateTime(fromDate));
+                    cmd.Parameters.AddWithValue("@EndTime", Convert.ToDateTime(toDate));
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@StartTime", new DateTime(2024, 04, 01));
+                    cmd.Parameters.AddWithValue("@EndTime", new DateTime(2024, 07, 01));
+                }
                 cmd.Parameters.AddWithValue("@MachineID", "");
                 cmd.Parameters.AddWithValue("@DownID", "");
                 cmd.Parameters.AddWithValue("@MatrixType", "DLoss_By_Catagory");

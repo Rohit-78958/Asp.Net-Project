@@ -44,27 +44,51 @@
                             </ItemTemplate>
                         </asp:ListView>
                     </div>
-            <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick"></asp:Timer>
+                    <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick"></asp:Timer>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
         </div>
         <footer>
             <div class="footer">
-                <p style="font-size:small; margin-left:5px">Powered By TPM-Trak</p>
-                <div class="floater"><p>Welcome to TPM-Trak</p></div>
-                <asp:Image ID="Amitlogo" ClientIDMode="Static" ImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9jEFAfciW6ZuygNvbT2nQSy2q2h1RttkoZA&s" style="margin: 5px;" Width="80px" runat="server" />
+                <p style="font-size: small; margin-left: 5px">Powered By TPM-Trak</p>
+                <div class="floater">
+                    <p>Welcome to TPM-Trak</p>
+                </div>
+                <asp:Image ID="Amitlogo" ClientIDMode="Static" ImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9jEFAfciW6ZuygNvbT2nQSy2q2h1RttkoZA&s" Style="margin: 5px;" Width="80px" runat="server" />
             </div>
         </footer>
     </form>
 
     <script>
         $(document).ready(function () {
-            $(".content").css('height', $(window).height() - $(".header").height() - $(".subHeader").height() - $(".footer").height() - 22);
+            // Calculate the available height for the content div
+            const contentHeight = $(window).height() - $(".header").outerHeight() - $(".subHeader").outerHeight() - $(".footer").outerHeight();
+
+            // Set the height of the content div to the available height
+            $(".content").height(contentHeight);
+
+            // Calculate the height of each box div based on the available height
+            const boxHeight = contentHeight / 3;
+
+            // Set the height of each box div to the calculated height
+            $(".box").height(boxHeight);
         });
 
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
-            $(".content").css('height', $(window).height() - $(".header").height() - $(".subHeader").height() - $(".footer").height() - 22);
+            // Calculate the available height for the content div
+            const contentHeight = $(window).height() - $(".header").outerHeight() - $(".subHeader").outerHeight() - $(".footer").outerHeight();
+
+            // Set the height of the content div to the available height
+            $(".content").height(contentHeight);
+
+            // Calculate the height of each box div based on the available height
+            const boxHeight = contentHeight / 3;
+
+            // Set the height of each box div to the calculated height
+            $(".box").height(boxHeight);
         });
     </script>
+
 </body>
 </html>

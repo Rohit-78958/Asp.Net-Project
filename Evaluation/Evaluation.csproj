@@ -142,9 +142,17 @@
     <Content Include="Images\sync_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" />
     <Content Include="Images\unnamedsc3.png" />
     <Content Include="Images\zoom_out_map_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 %281%29.svg" />
+    <Content Include="lib\bootstrap-multiselect\css\bootstrap-multiselect.css" />
+    <Content Include="lib\bootstrap-multiselect\css\bootstrap-multiselect.min.css" />
+    <Content Include="lib\bootstrap-multiselect\js\bootstrap-multiselect.js" />
+    <Content Include="lib\bootstrap-multiselect\js\bootstrap-multiselect.min.js" />
     <Content Include="Screen1.aspx" />
     <Content Include="Screen2.aspx" />
     <Content Include="Screen3.aspx" />
+    <Content Include="Scripts\bootstrap-multiselect\css\bootstrap-multiselect.css" />
+    <Content Include="Scripts\bootstrap-multiselect\css\bootstrap-multiselect.min.css" />
+    <Content Include="Scripts\bootstrap-multiselect\js\bootstrap-multiselect.js" />
+    <Content Include="Scripts\bootstrap-multiselect\js\bootstrap-multiselect.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -173,6 +181,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

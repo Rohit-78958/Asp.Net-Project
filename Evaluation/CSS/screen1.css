@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     background-color: #0f4988;
-    padding: 10px;
+    padding: 5px;
     color: white;
     font-weight: bold
 }
@@ -32,12 +32,13 @@
 .content{
     display:flex;
     justify-content:center;
-    flex-wrap:wrap
+    flex-wrap:wrap;
+    overflow:auto
 }
 
 .box {
     width: 25%;
-    height: 200px;
+    height: 50%;
     border-radius: 10px;
     background-color: #b3c5ed;
     margin: 30px
@@ -46,7 +47,7 @@
 .subbox {
     border-radius: 10px;
     background-color: #3150a0;
-    height: 60%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
